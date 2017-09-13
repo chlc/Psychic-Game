@@ -13,19 +13,3 @@ var letterToGuess = null;
 var compGuess = letters[Math.floor(Math.random() * letters.length)];
 	console.log(compGuess);
 
-document.onkeypress = function(event) {
-    var userGuess = event.key;
-
-    if(userGuess === compGuess){
-        wins++;
-    }else{
-        guesses--;
-    }
-
-    if(guesses = 0){
-        losses++
-    }
-}   
-    document.getElementById('wins').innerHTML = "Wins: " + wins;
-    document.getElementById('losses').innerHTML = "losses: " + losses;
-    document.getElementById('guesses').innerHTML = "Guesses left: " + guesses;
