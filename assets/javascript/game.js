@@ -10,7 +10,7 @@ var guessedLetters = [];
 var letterToGuess = null;
 
 //Have computer choose random letter
-var cGuess = letters[Math.floor(Math.random() * letters.length)];
-	console.log(cGuess);
+var compGuess = letters[Math.floor(Math.random() * letters.length)];
+	console.log(compGuess);
 
 //
