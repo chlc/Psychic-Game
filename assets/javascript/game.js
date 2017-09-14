@@ -52,3 +52,14 @@ var changeGuessesLeft = function() {
 var changeLetterGuess = function (){
 	this.letterToGuess = this.letters[Math.floor(Math.random() * letters.length)]
 }
+
+//Resetting the game
+var reset = function() {
+	totalGuesses = 9;
+	guessesLeft = 9;
+	guessedLetters= [];
+
+	changeGuessedLetters();
+	changeGuessesLeft();
+	changeLetterGuess();
+}
