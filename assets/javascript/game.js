@@ -17,7 +17,7 @@ var compGuess = letters[Math.floor(Math.random() * letters.length)];
 document.onkeypress = function(event) {
 	guessesLeft--;
 
-var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
 guessedLetters.push(userGuess);
 
 //Showing what the user input is
@@ -25,17 +25,19 @@ var changeGuessedLetters = function(){
 document.querySelector('#guessedLetters').innerHTML = "Guessed Letters: " + guessedLetters;
 };
 
-//Updated how many guesses are left
-var changeGuessesLeft = function() {
-	document.querySelector('#guessesLeft').innerHTML = "Guesses left: " + guessesLeft;
-};
-
 //Computer keeps guessing
 var changeLetterGuess = function (){
 	this.letterToGuess = this.letters[Math.floor(Math.random() * this.letters.length)];
 };
 
-console.log(userGuess);
+//Updated how many guesses are left
+var changeGuessesLeft = function() {
+	document.querySelector('#guessesLeft').innerHTML = "Guesses left: " + guessesLeft;
+};
+
+
+
+
 changeGuessedLetters();
 changeGuessesLeft();
 
@@ -54,15 +56,17 @@ changeLetterGuess();
 
 if (guessesLeft > 0){
 	if (userGuess===compGuess){
-		wins++, reset();
+		wins++;
 		alert("Your power is terrifying.");
 		document.querySelector('#wins').innerHTML = "Wins: " + wins;
+		reset();
 
 	}
 } else if (guessesLeft == 0){
-	losses++, reset();
+	losses++;
 	document.querySelector('#losses').innerHTML = "Losses: " + losses;
 	alert("This is embarrassing...the correct letter was " + letterToGuess + ".");
+	reset();
 
 
 }
