@@ -13,6 +13,35 @@ var letterToGuess = null;
 var compGuess = letters[Math.floor(Math.random() * letters.length)];
 	console.log(compGuess);
 
+//Updated how many guesses are left
+var changeGuessesLeft = function() {
+	document.querySelector('#guessesLeft').innerHTML = "Guesses left: " + guessesLeft;
+};
+
+//Computer keeps guessing
+var changeLetterGuess = function (){
+	this.letterToGuess = this.letters[Math.floor(Math.random() * letters.length)]
+};
+
+//Showing what the user input is
+var changeGuessedLetters = function(){
+document.querySelector('#guessedLetters').innerHTML = "Guessed Letters: " + guessedLetters;
+};
+
+
+//Resetting the game
+var reset = function() {
+	totalGuesses = 9;
+	guessesLeft = 9;
+	guessedLetters= [];
+
+	changeGuessedLetters();
+	changeGuessesLeft();
+	changeLetterGuess();
+}
+
+changeLetterGuess();
+
 //onKeyUp event to identify user input
 document.onKeyUp = function() {
 	guessesLeft--;
@@ -39,27 +68,4 @@ if (guessesLeft > 0){
 
 }
 
-}
-//Showing what the user input is
-document.querySelector('#guessedLetters').innerHTML = "Guessed Letters: " + guessedLetters;
-
-//Updated how many guesses are left
-var changeGuessesLeft = function() {
-	document.querySelector('#guessesLeft').innerHTML = "Guesses left: " + guessesLeft;
-}
-
-//Computer keeps guessing
-var changeLetterGuess = function (){
-	this.letterToGuess = this.letters[Math.floor(Math.random() * letters.length)]
-}
-
-//Resetting the game
-var reset = function() {
-	totalGuesses = 9;
-	guessesLeft = 9;
-	guessedLetters= [];
-
-	changeGuessedLetters();
-	changeGuessesLeft();
-	changeLetterGuess();
-}
+};
