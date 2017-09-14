@@ -37,7 +37,7 @@ var changeGuessesLeft = function() {
 
 
 
-
+console.log(userGuess);
 changeGuessedLetters();
 changeGuessesLeft();
 
