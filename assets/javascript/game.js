@@ -10,7 +10,7 @@ var letterToGuess = null;
   var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "_"];
 
 //Have computer choose random letter
-var compGuess = letters[Math.floor(Math.random() * letters.length)];
+var compGuess = this.letters[Math.floor(Math.random() * this.letters.length)];
 	console.log(compGuess);
 
 
