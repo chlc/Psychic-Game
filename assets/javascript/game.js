@@ -13,3 +13,9 @@ var letterToGuess = null;
 var compGuess = letters[Math.floor(Math.random() * letters.length)];
 	console.log(compGuess);
 
+//onKeyUp event to identify user input
+document.onKeyUp = function(event) {
+
+var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+}
