@@ -17,5 +17,11 @@ var compGuess = letters[Math.floor(Math.random() * letters.length)];
 document.onKeyUp = function(event) {
 
 var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+}
+//Showing what the user input is
+document.querySelector('#guessedLetters').innerHTML = "Guessed Letters: " + guessedLetters;
 
+//Updated how many guesses are left
+var changeGuessesLeft = function() {
+	document.querySelector('#guessesLeft').innerHTML = "Guessese left: " + guessesLeft;
 }
