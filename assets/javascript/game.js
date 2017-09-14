@@ -20,7 +20,7 @@ var changeGuessesLeft = function() {
 
 //Computer keeps guessing
 var changeLetterGuess = function (){
-	this.letterToGuess = this.letters[Math.floor(Math.random() * letters.length)]
+	this.letterToGuess = this.letters[Math.floor(Math.random() * this.letters.length)];
 };
 
 //Showing what the user input is
@@ -54,7 +54,7 @@ changeGuessedLetters();
 changeGuessesLeft();
 
 if (guessesLeft > 0){
-	if (userGuess === compGuess){
+	if (userGuess===compGuess){
 		wins++, reset();
 		alert("Your power is terrifying.");
 		document.querySelector('#wins').innerHTML = "Wins: " + wins;
