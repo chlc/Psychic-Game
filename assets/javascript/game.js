@@ -1,7 +1,3 @@
-//List of Avaialable Letters
-  var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "_"];
-
-//Initializing all of the variables
 var wins = 0;
 var losses = 0;
 var guesses = 9;
@@ -9,63 +5,65 @@ var guessesLeft = 9;
 var guessedLetters = [];
 var letterToGuess = null;
 
-//Have computer choose random letter
-var compGuess = letters[Math.floor(Math.random() * letters.length)];
-	console.log(compGuess);
+var computerLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-//Updated how many guesses are left
-var changeGuessesLeft = function() {
+var computerGuess = computerLetters[Math.floor(Math.random()*computerLetters.length)];
+	console.log(computerGuess);
+
+var updateGuessesLeft = function() {
 	document.querySelector('#guessesLeft').innerHTML = "Guesses left: " + guessesLeft;
 };
 
-//Computer keeps guessing
-var changeLetterGuess = function (){
-	this.letterToGuess = this.letters[Math.floor(Math.random() * this.letters.length)];
+var updateLetterToGuess = function() {
+  this.letterToGuess = this.computerLetters[Math.floor(Math.random() * this.computerLetters.length)];
 };
 
-//Showing what the user input is
-var changeGuessedLetters = function(){
-document.querySelector('#guessedLetters').innerHTML = "Guessed Letters: " + guessedLetters;
+var updateGuessedLetters = function() {
+	// Display user's guesses.
+	document.querySelector('#guessedLetters').innerHTML = "Guessed Letters: " + guessedLetters;
+
 };
 
-
-//Resetting the game
+// Reset function
 var reset = function() {
 	totalGuesses = 9;
 	guessesLeft = 9;
-	guessedLetters= [];
+	guessedLetters = [];
 
-	changeGuessedLetters();
-	changeGuessesLeft();
-	changeLetterGuess();
+	updateGuessesLeft();
+	updateGuessedLetters();
+	updateLetterToGuess();
 }
 
-changeLetterGuess();
-
-//onKeyUp event to identify user input
-document.onKeyUp = function() {
-	guessesLeft--;
-
-var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-console.log(userGuess);
-guessedLetters.push(userGuess);
-changeGuessedLetters();
-changeGuessesLeft();
-
-if (guessesLeft > 0){
-	if (userGuess===compGuess){
-		wins++, reset();
-		alert("Your power is terrifying.");
-		document.querySelector('#wins').innerHTML = "Wins: " + wins;
-
-	}
-} else if (guessesLeft == 0){
-	losses++, reset();
-	document.querySelector('#losses').innerHTML = "Losses: " + losses;
-	alert("This is embarrassing...the correct letter was " + letterToGuess + ".");
+updateLetterToGuess();
 
 
-}
+document.onkeyup = function() {
+		guessesLeft--;
+	// Takes user's guess and ensures it is converted to lower case
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+		// Testing -- remove
+		console.log(userGuess);
 
+	guessedLetters.push(userGuess);
+	updateGuessedLetters();
+	updateGuessesLeft();
+
+		if (guessesLeft > 0){
+			// User guesses correctly
+            if (userGuess===computerGuess){
+                wins++, reset();
+                alert("You truly are a psychic."); 
+                document.querySelector('#wins').innerHTML = "Wins: " + wins;
+                displayWinPsychic();
+                       
+        } 
+
+        } else if (guessesLeft == 0){
+            // Lose and update the loss 
+            losses++, reset();
+            document.querySelector('#losses').innerHTML = "Losses: " + losses;
+            alert("You are not a psychic. The letter was " + letterToGuess + ".");
+            displayLosePsychic();
+        }    
 };
